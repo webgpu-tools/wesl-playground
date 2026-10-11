@@ -4,7 +4,6 @@
 	"description": "",
 	"type": "module",
 	"scripts": {
-		"postinstall": "node script/copyWgslAnalyzerAssets.js",
 		"start": "vite",
 		"dev": "vite",
 		"build": "vite build",
@@ -33,7 +32,7 @@
 		"solid-transition-group": "^0.3.0",
 		"wesl": "^0.7.31",
 		"wesl-rs-web": "^0.6.0",
-		"wgsl-analyzer-web": "0.12.0-next.505",
+		"wgsl-analyzer-web": "0.12.0-next.510",
 		"zod": "^4.6.5"
 	},
 	"packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",

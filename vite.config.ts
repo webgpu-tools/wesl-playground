@@ -6,8 +6,6 @@ import wasm from 'vite-plugin-wasm'
 // wgsl-analyzer is built with -pthread, so it needs SharedArrayBuffer, which
 // needs a cross-origin isolated page. Production gets these from public/_headers
 // (Cloudflare: https://developers.cloudflare.com/pages/configuration/headers/).
-// wgsl-analyzer assets are copied to public/wgsl-analyzer by
-// script/copyWgslAnalyzerAssets.js.
 const crossOriginIsolation = {
   'Cross-Origin-Opener-Policy': 'same-origin',
   'Cross-Origin-Embedder-Policy': 'require-corp',
@@ -35,6 +33,11 @@ export default defineConfig({
   },
   build: {
     target: 'esnext',
+  },
+  // wgsl-analyzer-web's worker loads the emscripten glue with a dynamic import,
+  // which needs code splitting.
+  worker: {
+    format: 'es',
   },
   css: {
     preprocessorOptions: {
