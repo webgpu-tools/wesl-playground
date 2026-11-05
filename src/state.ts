@@ -10,6 +10,7 @@ export const filesSchema = z.array(
 export const featureSchema = z.enum(['enable', 'disable', 'keep', 'error'])
 
 export const optionsSchema = z.object({
+  version: z.string(),
   command: z.string(),
   main: z.string(),
   mangler: z.string(),

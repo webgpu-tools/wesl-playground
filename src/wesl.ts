@@ -1,13 +1,24 @@
 import type { Files, Options } from './state'
 
-import InitWeslRs, * as WeslRs from 'wesl-rs-web'
+import * as WeslRs from 'wesl-rs-web'
 import * as WeslJs from 'wesl'
 
 import bevy_wgsl from './packages/bevy_wgsl.json'
 import lygia_wgsl from './packages/lygia_wgsl.json'
 
 export async function compileRs(files: Files, options: Options) {
-  await InitWeslRs()
+  let compiler: typeof WeslRs
+  if (options.version === 'latest') {
+    compiler = WeslRs
+  } else if (options.version === '0.6.0') {
+    compiler = await import('wesl-rs-web-v6')
+  } else if (options.version === 'overloads') {
+    compiler = await import('wesl-rs-web-overloads')
+  } else {
+    throw new Error(`unknown wesl-rs version ${options.version}`)
+  }
+
+  await compiler.default()
 
   const flatFiles = Object.assign(
     {},
@@ -28,7 +39,7 @@ export async function compileRs(files: Files, options: Options) {
 
   try {
     console.debug('[wesl-rs] run params', params)
-    const res = WeslRs.run(params) as string // TODO
+    const res = compiler.run(params) as string // TODO
     console.log('[wesl-rs] compilation result', { source: res })
     return res
   } catch (e) {

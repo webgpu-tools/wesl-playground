@@ -122,8 +122,24 @@ export const WeslRsFeatures = (props: OptionsProps) => {
     props.setOptions('mangler', 'escape')
   }
 
+  const versions = ['latest', '0.6.0', 'overloads']
+  if (!versions.includes(props.options.version)) {
+    props.setOptions('version', versions[0])
+  }
+
   return (
     <>
+      <label>
+        <span>version</span>
+        <select
+          value={props.options.version}
+          onchange={(e) => props.setOptions('version', e.currentTarget.value)}
+        >
+          <For each={versions}>
+            {(ver) => <option value={ver}>{ver}</option>}
+          </For>
+        </select>
+      </label>
       <span>Features</span>
       <label>
         <input
@@ -296,24 +312,15 @@ export const OptionsForm = (props: OptionsProps) => (
       <span>auto recompile</span>
     </label>
     <label>
-      <input
-        type="radio"
-        name="linker"
-        value="wesl-rs"
-        checked={props.linker() === 'wesl-rs'}
+      <span>compiler</span>
+      <select
+        value={props.linker()}
         onchange={(e) => props.setLinker(e.currentTarget.value)}
-      />
-      <span>wesl-rs</span>
-    </label>
-    <label>
-      <input
-        type="radio"
-        name="linker"
-        value="wesl-js"
-        checked={props.linker() === 'wesl-js'}
-        onchange={(e) => props.setLinker(e.currentTarget.value)}
-      />
-      <span>wesl-js</span>
+      >
+        <For each={['wesl-rs', 'wesl-js']}>
+          {(linker) => <option value={linker}>{linker}</option>}
+        </For>
+      </select>
     </label>
     <Show when={props.linker() === 'wesl-rs'}>
       <WeslRsFeatures {...props} />
