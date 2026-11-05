@@ -14,26 +14,26 @@
 	"devDependencies": {
 		"@types/ansi-html": "^0.0.0",
 		"@webgpu/types": "^0.1.74",
-		"prettier": "3.9.9",
-		"sass-embedded": "^1.105.1",
+		"prettier": "3.9.10",
+		"sass-embedded": "^1.107.1",
 		"typescript": "^7.0.2",
-		"vite": "^8.3.2",
+		"vite": "^8.3.6",
 		"vite-plugin-monaco-editor": "^1.1.0",
-		"vite-plugin-solid": "^2.11.14",
+		"vite-plugin-solid": "^2.11.15",
 		"vite-plugin-top-level-await": "^1.6.0",
 		"vite-plugin-wasm": "^3.6.0",
-		"wrangler": "^4.147.0"
+		"wrangler": "^4.158.0"
 	},
 	"dependencies": {
 		"@solid-primitives/deep": "^0.3.7",
 		"monaco-editor": "^0.57.0",
 		"solid-icons": "^1.2.0",
-		"solid-js": "^1.9.15",
+		"solid-js": "^1.9.18",
 		"solid-transition-group": "^0.3.0",
 		"wesl": "^0.7.31",
 		"wesl-rs-web": "^0.6.0",
 		"wgsl-analyzer-web": "0.12.0-next.510",
-		"zod": "^4.6.5"
+		"zod": "^4.6.7"
 	},
 	"packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
 	"allowScripts": {
